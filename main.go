@@ -75,6 +75,9 @@ func ExcludeJoinAndReverse(exclude []int, nums ...int) (int, error) {
 
 	allExclude := []string{}
 	for _, num := range nums {
+		if num < 0 {
+			return 0, fmt.Errorf("negative number")
+		}
 		numExclude := []string{}
 		textNum := strconv.Itoa(num)
 		for i := 0; i < len(textNum); i++ {
