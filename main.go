@@ -156,7 +156,6 @@ func MultiplyWithTheSide(nums ...int) int {
 
 	total := 0
 
-	// Main goroutine melakukan summation
 	for i := 0; i < pairCount; i++ {
 		total += <-sumMultiply
 	}
