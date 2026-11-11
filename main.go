@@ -138,19 +138,28 @@ func CountEachRepeatNumber(num int) map[int]int {
 }
 
 func MultiplyWithTheSide(nums ...int) int {
-	jumlah := 0
+	pairCount := (len(nums) + 1) / 2
+	sumMultiply := make(chan int, pairCount)
 
 	for i := 0; i < len(nums); i += 2 {
-		var hasil int
+		a := nums[i]
+		b := a
 
 		if i+1 < len(nums) {
-			hasil = nums[i] * nums[i+1]
-		} else {
-			hasil = nums[i] * nums[i]
+			b = nums[i+1]
 		}
 
-		jumlah += hasil
+		go func(x, y int) {
+			sumMultiply <- x * y
+		}(a, b)
 	}
 
-	return jumlah
+	total := 0
+
+	// Main goroutine melakukan summation
+	for i := 0; i < pairCount; i++ {
+		total += <-sumMultiply
+	}
+
+	return total
 }
