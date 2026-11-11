@@ -15,7 +15,7 @@ func main() {
 
 	fmt.Println("Question 2")
 	fmt.Println(ExcludeJoinAndReverse([]int{0, 1, 0}, 1000, 1010)) // 0 not found
-	result, err := ExcludeJoinAndReverse([]int{0, 1, 0}, 1259, 26301)
+	result, err := ExcludeJoinAndReverse([]int{0, 1, 0}, 1259, 2601)
 	fmt.Println(result, err) // 62952 <nil>
 
 	fmt.Println("Question 3")
